@@ -32,11 +32,11 @@
 
 | Field | Your Answer |
 |-------|-------------|
-| **Full Name** | [Write your full name here] |
-| **Student ID** | [Write your student ID here] |
-| **University Email** | [yourid]@std.psau.edu.sa |
-| **GitHub Username** | [your-github-username] |
-| **Repository Link** | [Paste your repository link here] |
+| **Full Name** | [dalia abdullah alajmi] |
+| **Student ID** | [445052288] |
+| **University Email** | 445052288@std.psau.edu.sa |
+| **GitHub Username** | [dalial-alajmi] 
+| **Repository Link** | https://github.com/dalia-alajmi/OS-Assignment3-Dalia-Alajmi](https://github.com/dalia-alajmi/OS-Assignment3-Dalia-Alajmi) |
  
 ---
 
@@ -132,16 +132,17 @@
 
 ## Your Development Log
 
-### Entry 1 - [Date and Time]
-**What I did**:
-
-**Details**:
-
-**Challenges**:
-
-**Solution**:
-
-**Time spent**:
+### Entry 1 - [October 29 ,2026 - 7:50 PM]
+**what I did :**
+**Forked the repository and set my student ID**:
+**Details:**
+**forked repository to OS-Assignment3-Dalia-Alajmi-set student ID to 445052288 in SchedulerSimulationSync.java**:
+**Challenges :**
+**Understanding the starter code structure **:
+**Solution:**
+**followed assignment instructions step-by-step**:
+**Time spent :**
+** 40 minutes**:
 
 ---
 
