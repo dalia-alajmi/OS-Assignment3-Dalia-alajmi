@@ -146,17 +146,19 @@
 
 ---
 
-### Entry 2 - [Date and Time]
+### Entry 2 - [October 30 , 2026 -6:25 PM]
 **What I did**:
-
+Implemented Feature 1 by securing the ReadyQueue using ReentrantLock . 
 **Details**:
-
+- Imported ReentrantLock and created a private final instance in ReadyQueue class.
+Protected `add()` and `poll()` methods using `lock()` and `try-finally` blocks to guarantee unlocking.
+- Prevented race conditions during concurrent CPU queue access.
 **Challenges**:
-
-**Solution**:
-
+Ensuring proper try-finally scope so that locks are released under all execution path.
+**Solution:**
+  Wrapped critical queue operations inside try blocks with unlock inside finally blocks.
 **Time spent**:
-
+35 minutes 
 ---
 
 ### Entry 3 - [Date and Time]
