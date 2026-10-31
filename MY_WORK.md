@@ -176,9 +176,7 @@ Implemented Feature 2 by protecting SharedStats counters and getters using Reent
 Applied a clean single static lock pattern for all static shared methods in SharedStats and structured `try-finally` blocks cleanly across all functions.
 **Time spent:**
   45 minutes
-
 ---
-
 ### Entry 4 - [Date and Time]
 **What I did**:
 
