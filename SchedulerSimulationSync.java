@@ -61,43 +61,74 @@ class SharedStats {
     static final java.util.concurrent.atomic.AtomicInteger busyWaitPolls = new java.util.concurrent.atomic.AtomicInteger(0);
 
     // TODO Feature 2: declare the lock(s) protecting the three shared variables above here.
+    private static final ReentrantLock lock = new ReentrantLock ();
     // Think about it: ONE lock for the three variables, or ONE lock PER variable? (you must justify it in MY_WORK.md)
 
     public static void incrementContextSwitch() {
         // TODO Feature 2: protect this critical section
+  lock.lock();
+     try{
         int tmp = contextSwitchCount;       // 1) read
         RaceWindow.pause();                 //    <- another thread can read the SAME value here
-        contextSwitchCount = tmp + 1;       // 2) write  (one increment is lost if someone else did the same)
+        contextSwitchCount = tmp + 1 ;// 2) write  (one increment is lost if someone else did the same)
+     }finally {
+      lock.unlock();
+     }
     }
 
     public static void incrementCompletedProcess() {
         // TODO Feature 2: protect this critical section
+      lock.lock();
+     try{
         int tmp = completedProcessCount;
         RaceWindow.pause();
         completedProcessCount = tmp + 1;
+       }finally {
+      lock.unlock();
+     }
     }
 
     public static void addServiceTime(int ms) {
         // TODO Feature 2: protect this critical section
+       lock.lock();
+     try{
         long tmp = totalServiceTime;
         RaceWindow.pause();
         totalServiceTime = tmp + ms;
+        }finally {
+      lock.unlock();
+     }
     }
 
     // Readers must also be protected (a read in the middle of an update is not safe either)
     public static int getCompletedProcessCount() {
         // TODO Feature 2: protect this read
+       lock.lock();
+     try{
         return completedProcessCount;
+       }finally {
+      lock.unlock();
+     }
     }
 
     public static int getContextSwitchCount() {
         // TODO Feature 2: protect this read
+        lock.lock();
+     try{
         return contextSwitchCount;
+      }finally {
+      lock.unlock();
+     }
     }
 
     public static long getTotalServiceTime() {
         // TODO Feature 2: protect this read
+       lock.lock();
+     try{
         return totalServiceTime;
+     }finally {
+      lock.unlock();
+     }
     }
 }
 
@@ -152,19 +183,28 @@ class ReadyQueue {
 
     public Process processOf(Thread thread) {
         // TODO Feature 1: protect this access
+      lock.lock();
+        try{ 
         return map.get(thread);
+         } finally {
+            lock.unlock();
+        }
     }
 
     // Names of the processes currently waiting in the queue (used to display the ready queue)
     public String snapshot() {
         // TODO Feature 1: protect this critical section
+      lock.lock();
+        try{ 
         StringBuilder sb = new StringBuilder();
         for (Thread t : list) {
             if (sb.length() > 0) sb.append(" → ");
             sb.append(map.get(t).getName());
         }
         return sb.length() == 0 ? "empty" : sb.toString();
-    }
+    } finally {
+            lock.unlock();
+        }
 }
 
 // Class representing a process (same as Assignment 1) - executes ONE time quantum per thread start
