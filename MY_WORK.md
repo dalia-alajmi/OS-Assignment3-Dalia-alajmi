@@ -161,16 +161,21 @@ Ensuring proper try-finally scope so that locks are released under all execution
 35 minutes 
 ---
 
-### Entry 3 - [Date and Time]
-**What I did**:
+### Entry 3 - [October 31, 2026 - 7:40 PM]
 
-**Details**:
-
-**Challenges**:
-
-**Solution**:
-
-**Time spent**:
+**What I did:**
+Implemented Feature 2 by protecting SharedStats counters and getters using ReentrantLock, and finalized thread safety for processOf() and snapshot() methods.
+**Details:**
+- Declared a static final `ReentrantLock` in `SharedStats` to protect shared execution counters.
+- Synchronized write methods `incrementContextSwitch()`, `incrementCompletedProcess()`, and `addServiceTime()` using `lock()` and `try-finally`.
+- Secured read operations in `getCompletedProcessCount()`, `getContextSwitchCount()`, and `getTotalServiceTime()` against race conditions.
+- Enclosed `processOf()` and `snapshot()` in `ReadyQueue` within `try-finally` blocks to guarantee safe access to `map` and `list`.
+**Challenges:**
+ Handling nested locks and avoiding missing reader locks in SharedStats.
+**Solution:** 
+Applied a clean single static lock pattern for all static shared methods in SharedStats and structured `try-finally` blocks cleanly across all functions.
+**Time spent:**
+  45 minutes
 
 ---
 
