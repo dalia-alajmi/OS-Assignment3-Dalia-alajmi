@@ -177,17 +177,25 @@ Applied a clean single static lock pattern for all static shared methods in Shar
 **Time spent:**
   45 minutes
 ---
-### Entry 4 - [Date and Time]
+### Entry 4 - Day 4: Feature 3 Implementation
 **What I did**:
+Implemented Feature 3 by replacing the busy-waiting loop in `CpuWorker` with a Counting Semaphore in `ReadyQueue`.
 
 **Details**:
+- Declared a counting semaphore `readySemaphore` initialized to 0 inside `ReadyQueue`.
+- Added wrapper methods `acquire()` and `release()` in `ReadyQueue`.
+- Updated `ReadyQueue.add()` to call `readySemaphore.release()` when a new process is added.
+- Replaced the polling/sleep loop in `CpuWorker.run()` with `readyQueue.acquire()` to block worker threads when the queue is empty.
+- Added final `readyQueue.release()` call upon process completion to allow blocked threads to wake up and terminate cleanly.
 
 **Challenges**:
+Handling CPU worker shutdown to prevent worker threads from waiting indefinitely on the semaphore after all processes complete.
 
 **Solution**:
+Signaled the semaphore upon process completion so all worker threads can unblock, check the completion status, and exit gracefully.
 
 **Time spent**:
-
+45 minutes
 ---
 
 ### Entry 5 - [Date and Time]
