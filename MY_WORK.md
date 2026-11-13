@@ -32,10 +32,10 @@
 
 | Field | Your Answer |
 |-------|-------------|
-| **Full Name** | [dalia abdullah alajmi] |
-| **Student ID** | [445052288] |
+| **Full Name** | dalia abdullah alajmi|
+| **Student ID** | 445052288 |
 | **University Email** | 445052288@std.psau.edu.sa |
-| **GitHub Username** | [dalial-alajmi] 
+| **GitHub Username** |  dalial-alajmi |
 | **Repository Link** | https://github.com/dalia-alajmi/OS-Assignment3-Dalia-Alajmi](https://github.com/dalia-alajmi/OS-Assignment3-Dalia-Alajmi) |
  
 ---
