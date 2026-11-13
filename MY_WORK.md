@@ -198,16 +198,20 @@ Signaled the semaphore upon process completion so all worker threads can unblock
 45 minutes
 ---
 
-### Entry 5 - [Date and Time]
+### Entry 5 - November 13, 2026 - 12:30 PM
 **What I did**:
+Verified synchronization across 5 consecutive simulation runs and finalized all code updates in GitHub.
 
 **Details**:
+Executed `SchedulerSimulationSync` 5 consecutive times in NetBeans using student ID `445052288`. Confirmed that `Context switches`, `Completed processes`, `Total service time`, and `Busy-waiting polls (0)` matched expected values with zero race conditions or deadlocks. Committed the final synchronized Java file to the repository.
 
 **Challenges**:
+Ensuring clean thread termination without premature semaphore release or blocked CPU workers when the final process finished execution.
 
 **Solution**:
+Added a completion check inside `CpuWorker.run()` after `readyQueue.acquire()` so remaining blocked threads exit cleanly once `completedProcessCount >= totalProcesses`, and released the semaphore only when the last process completes.
 
-**Time spent**:
+**Time spent**: 30 minutes
 
 ---
 
